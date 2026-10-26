@@ -17,6 +17,12 @@ import {
 } from "lucide-react";
 
 export function Footer() {
+  const [currentYear, setCurrentYear] = React.useState<number | string>(2025);
+
+  React.useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+
   const footerServices = [
     "Remodeling & Renovations",
     "Custom Carpentry & Woodworks",
@@ -240,7 +246,7 @@ export function Footer() {
       <div className="border-t border-stone-800/80 bg-stone-950 py-6 text-xs text-stone-500">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-center sm:text-left">
-            © {new Date().getFullYear()} Envision Carpentry LLC. All rights reserved. Registered & Insured in Pennsylvania.
+            © {currentYear} Envision Carpentry LLC. All rights reserved. Registered & Insured in Pennsylvania.
           </p>
 
           <div className="flex items-center gap-6">

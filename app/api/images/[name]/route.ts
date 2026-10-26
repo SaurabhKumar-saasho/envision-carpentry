@@ -49,17 +49,31 @@ export async function GET(
   context: { params: Promise<{ name: string }> }
 ) {
   const { name } = await context.params;
-  const sourcePath = imageMap[name];
+  const safeName = path.basename(name);
 
-  if (!sourcePath || !fs.existsSync(sourcePath)) {
-    return new NextResponse("Not Found", { status: 404 });
+  // 1. Check if image exists in public folder
+  const publicPath = path.join(process.cwd(), "public", safeName);
+  if (fs.existsSync(publicPath)) {
+    const fileBuffer = fs.readFileSync(publicPath);
+    return new NextResponse(fileBuffer, {
+      headers: {
+        "Content-Type": "image/jpeg",
+        "Cache-Control": "public, max-age=31536000, immutable",
+      },
+    });
   }
 
-  const fileBuffer = fs.readFileSync(sourcePath);
-  return new NextResponse(fileBuffer, {
-    headers: {
-      "Content-Type": "image/jpeg",
-      "Cache-Control": "public, max-age=31536000, immutable",
-    },
-  });
+  // 2. Fallback to imageMap
+  const sourcePath = imageMap[name];
+  if (sourcePath && fs.existsSync(sourcePath)) {
+    const fileBuffer = fs.readFileSync(sourcePath);
+    return new NextResponse(fileBuffer, {
+      headers: {
+        "Content-Type": "image/jpeg",
+        "Cache-Control": "public, max-age=31536000, immutable",
+      },
+    });
+  }
+
+  return new NextResponse("Not Found", { status: 404 });
 }
