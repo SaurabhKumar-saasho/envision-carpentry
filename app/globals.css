@@ -7,9 +7,23 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-poppins);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-heading: var(--font-sans);
+
+  /* Carpentry Brand Palette */
+  --color-wood: var(--wood);
+  --color-wood-foreground: var(--wood-foreground);
+  --color-wood-dark: var(--wood-dark);
+  --color-wood-light: var(--wood-light);
+  --color-amber: var(--amber);
+  --color-amber-foreground: var(--amber-foreground);
+  --color-amber-hover: var(--amber-hover);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-foreground: var(--charcoal-foreground);
+  --color-sand: var(--sand);
+
+  /* Shadcn UI tokens */
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,72 +63,108 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  /* Warm artisanal woodcraft palette */
+  --background: oklch(0.985 0.008 75); /* #faf8f5 Warm organic linen */
+  --foreground: oklch(0.20 0.02 55);    /* #221c18 Deep warm espresso */
+  --card: oklch(0.995 0.004 75);
+  --card-foreground: oklch(0.20 0.02 55);
+  --popover: oklch(0.995 0.004 75);
+  --popover-foreground: oklch(0.20 0.02 55);
+
+  /* Primary: Rich saddle wood brown from reference banner */
+  --primary: oklch(0.44 0.11 52);        /* #733e1e Saddle Wood Brown */
+  --primary-foreground: oklch(0.985 0.005 75);
+
+  /* Secondary: Soft light oak/linen tone */
+  --secondary: oklch(0.945 0.02 75);     /* #f2ebe1 Warm Linen */
+  --secondary-foreground: oklch(0.30 0.05 50);
+
+  /* Muted: Subtle timber stone */
+  --muted: oklch(0.95 0.012 75);         /* #f4eee6 Light Warm Stone */
+  --muted-foreground: oklch(0.50 0.025 55);
+
+  /* Accent: Golden Carpenter's Amber from Logo */
+  --accent: oklch(0.74 0.17 68);         /* #f59e0b Logo Golden Amber */
+  --accent-foreground: oklch(0.18 0.02 55);
+
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --border: oklch(0.89 0.015 70);        /* Soft warm border */
+  --input: oklch(0.89 0.015 70);
+  --ring: oklch(0.44 0.11 52);
+
+  /* Envision Brand Specific Color Tokens */
+  --wood: oklch(0.44 0.11 52);           /* #733e1e Signature Saddle Brown */
+  --wood-foreground: oklch(0.99 0.005 75);
+  --wood-dark: oklch(0.30 0.08 50);      /* #462211 Deep Walnut */
+  --wood-light: oklch(0.92 0.035 70);    /* #f0e4d2 Natural Oak */
+  --amber: oklch(0.74 0.17 68);          /* #f59e0b Golden Saw Blade Amber */
+  --amber-hover: oklch(0.68 0.18 64);    /* #d97706 Rich Honey Amber */
+  --amber-foreground: oklch(0.18 0.02 55);
+  --charcoal: oklch(0.20 0.01 50);       /* #1c1917 Heavy Badge Charcoal */
+  --charcoal-foreground: oklch(0.985 0.005 75);
+  --sand: oklch(0.96 0.018 78);          /* #f7f3ec Soft Sand */
+
+  --chart-1: oklch(0.44 0.11 52);
+  --chart-2: oklch(0.74 0.17 68);
+  --chart-3: oklch(0.30 0.08 50);
+  --chart-4: oklch(0.85 0.04 70);
+  --chart-5: oklch(0.20 0.01 50);
+  --radius: 0.5rem;
+
+  --sidebar: oklch(0.97 0.01 75);
+  --sidebar-foreground: oklch(0.20 0.02 55);
+  --sidebar-primary: oklch(0.44 0.11 52);
+  --sidebar-primary-foreground: oklch(0.985 0.005 75);
+  --sidebar-accent: oklch(0.94 0.02 75);
+  --sidebar-accent-foreground: oklch(0.20 0.02 55);
+  --sidebar-border: oklch(0.89 0.015 70);
+  --sidebar-ring: oklch(0.44 0.11 52);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  /* Dark Workshop Mode */
+  --background: oklch(0.16 0.015 50);    /* #181513 Workshop Ebony Timber */
+  --foreground: oklch(0.96 0.01 75);     /* Warm ivory */
+  --card: oklch(0.20 0.02 50);           /* Dark Walnut Panel */
+  --card-foreground: oklch(0.96 0.01 75);
+  --popover: oklch(0.20 0.02 50);
+  --popover-foreground: oklch(0.96 0.01 75);
+
+  /* Primary: Golden Amber glow in dark mode */
+  --primary: oklch(0.74 0.17 68);
+  --primary-foreground: oklch(0.16 0.015 50);
+
+  --secondary: oklch(0.26 0.03 52);
+  --secondary-foreground: oklch(0.96 0.01 75);
+  --muted: oklch(0.23 0.02 50);
+  --muted-foreground: oklch(0.68 0.02 65);
+
+  --accent: oklch(0.48 0.11 52);
+  --accent-foreground: oklch(0.98 0.005 75);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: oklch(0.28 0.02 50);
+  --input: oklch(0.28 0.02 50);
+  --ring: oklch(0.74 0.17 68);
+
+  --wood: oklch(0.50 0.12 52);
+  --wood-foreground: oklch(0.98 0.005 75);
+  --wood-dark: oklch(0.22 0.03 50);
+  --wood-light: oklch(0.35 0.06 55);
+  --amber: oklch(0.74 0.17 68);
+  --amber-hover: oklch(0.80 0.16 70);
+  --amber-foreground: oklch(0.16 0.015 50);
+  --charcoal: oklch(0.12 0.01 50);
+  --charcoal-foreground: oklch(0.985 0.005 75);
+  --sand: oklch(0.25 0.02 60);
+
+  --sidebar: oklch(0.18 0.015 50);
+  --sidebar-foreground: oklch(0.96 0.01 75);
+  --sidebar-primary: oklch(0.74 0.17 68);
+  --sidebar-primary-foreground: oklch(0.16 0.015 50);
+  --sidebar-accent: oklch(0.26 0.03 52);
+  --sidebar-accent-foreground: oklch(0.96 0.01 75);
+  --sidebar-border: oklch(0.28 0.02 50);
+  --sidebar-ring: oklch(0.74 0.17 68);
 }
 
 @layer base {
@@ -126,5 +176,85 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+/* 
+  ========================================================================
+  PREMIUM ARCHITECTURAL BACKGROUND PATTERNS & GRADIENT UTILITIES
+  ========================================================================
+*/
+@layer utilities {
+  /* Architectural CAD & Drafting Grid - Light Sections */
+  .bg-grid-stone {
+    background-image: 
+      linear-gradient(to right, rgba(115, 62, 30, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(115, 62, 30, 0.05) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  /* Blueprint Grid - Dark Sections */
+  .bg-grid-white {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  /* Micro CAD Precision Grid */
+  .bg-grid-micro-stone {
+    background-image: 
+      linear-gradient(to right, rgba(115, 62, 30, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(115, 62, 30, 0.04) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+
+  .bg-grid-micro-dark {
+    background-image: 
+      linear-gradient(to right, rgba(245, 158, 11, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(245, 158, 11, 0.06) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+
+  /* Dot Matrix Pattern - Light */
+  .bg-dots-stone {
+    background-image: radial-gradient(rgba(115, 62, 30, 0.12) 1.2px, transparent 1.2px);
+    background-size: 24px 24px;
+  }
+
+  /* Dot Matrix Pattern - Dark */
+  .bg-dots-amber {
+    background-image: radial-gradient(rgba(245, 158, 11, 0.16) 1.2px, transparent 1.2px);
+    background-size: 24px 24px;
+  }
+
+  /* Diagonal Timber Slat / Milled Lumber Hash Pattern */
+  .bg-timber-stripes {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(115, 62, 30, 0.035) 0px,
+      rgba(115, 62, 30, 0.035) 2px,
+      transparent 2px,
+      transparent 14px
+    );
+  }
+
+  .bg-timber-stripes-dark {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(245, 158, 11, 0.04) 0px,
+      rgba(245, 158, 11, 0.04) 2px,
+      transparent 2px,
+      transparent 16px
+    );
+  }
+
+  /* Gradient Radial Spotlights */
+  .bg-spotlight-amber {
+    background: radial-gradient(circle at 50% 30%, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0) 70%);
+  }
+
+  .bg-spotlight-wood {
+    background: radial-gradient(circle at 50% 50%, rgba(115, 62, 30, 0.14) 0%, rgba(115, 62, 30, 0) 70%);
   }
 }
